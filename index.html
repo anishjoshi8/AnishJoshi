@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anish Deepak Joshi | AI Infrastructure & MLOps Architect</title>
   <meta name="description" content="Lead Data Scientist & ML Infrastructure Engineer specializing in Kubernetes MLOps, Deterministic Agentic AI, and Causal Inference at scale."/>
+  
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Space Grotesk & Inter & JetBrains Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            sans: ['Space Grotesk', 'Inter', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
           }
         }
@@ -21,22 +25,35 @@
     }
   </script>
   <style>
-    body { background-color: #070a12; color: #e2e8f0; }
-    .glass { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); }
-    .glow:hover { border-color: rgba(56, 189, 248, 0.45); box-shadow: 0 0 28px -6px rgba(56, 189, 248, 0.18); }
-    .tab-active { background: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.6); color: #38bdf8; }
+    body { background-color: #030712; color: #f3f4f6; overflow-x: hidden; }
+    .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(56, 189, 248, 0.12); }
+    .glow-card:hover { border-color: rgba(56, 189, 248, 0.5); box-shadow: 0 0 30px -5px rgba(56, 189, 248, 0.2); transform: translateY(-2px); transition: all 0.3s ease; }
+    .tab-active { background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.7); color: #38bdf8; }
+    
+    /* Pop-in animation */
+    @keyframes popIn {
+      0% { opacity: 0; transform: translateY(20px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .animate-pop { animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+    /* Canvas background for streaming data lines */
+    #matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.25; }
   </style>
 </head>
-<body class="antialiased selection:bg-sky-500 selection:text-white">
+<body class="antialiased selection:bg-sky-500 selection:text-white relative">
 
-  <!-- Live System Telemetry Header -->
-  <div class="border-b border-slate-800/80 bg-slate-950/90 text-xs font-mono text-slate-400 py-2.5 px-6">
+  <!-- Streaming Background Lines Canvas -->
+  <canvas id="matrix-canvas"></canvas>
+
+  <!-- Top Telemetry Bar -->
+  <div class="relative z-10 border-b border-slate-800/80 bg-slate-950/90 text-xs font-mono text-slate-400 py-2.5 px-6">
     <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center space-x-2">
         <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>NODE: ANISH-JOSHI-MLOPS</span>
+        <span>NODE: ANISH-JOSHI-INFRA-01</span>
         <span class="text-slate-700">|</span>
-        <span>SAN FRANCISCO BAY AREA, CA</span>
+        <span>SAN FRANCISCO BAY AREA</span>
       </div>
       <div class="flex flex-wrap gap-4 md:gap-6">
         <span>DEPLOY_VELOCITY: <strong class="text-emerald-400">2.0x</strong></span>
@@ -46,17 +63,18 @@
     </div>
   </div>
 
-  <!-- Navigation -->
+  <!-- Navbar -->
   <nav class="sticky top-0 z-50 glass border-b border-slate-800/60">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="font-mono font-semibold text-lg tracking-tight text-white">
-        anishjoshi8<span class="text-sky-400">.infra</span>
+      <a href="#" class="font-mono font-semibold text-lg tracking-tight text-white flex items-center space-x-2">
+        <span class="text-sky-400">⚡</span>
+        <span>anishjoshi8<span class="text-sky-400">.ai</span></span>
       </a>
       <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
-        <a href="#architectures" class="hover:text-sky-400 transition">System Topologies</a>
-        <a href="#simulator" class="hover:text-sky-400 transition">Cost/Latency Simulator</a>
+        <a href="#architectures" class="hover:text-sky-400 transition">Systems</a>
+        <a href="#simulator" class="hover:text-sky-400 transition">Cost Simulator</a>
         <a href="#stack" class="hover:text-sky-400 transition">Infrastructure Stack</a>
-        <a href="#writing" class="hover:text-sky-400 transition">Engineering Notes</a>
+        <a href="#writing" class="hover:text-sky-400 transition">Writing</a>
       </div>
       <div class="flex items-center space-x-3">
         <a href="https://github.com/anishjoshi8" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 font-mono text-xs hover:border-slate-500 transition">
@@ -70,171 +88,164 @@
   </nav>
 
   <!-- Hero Section -->
-  <header class="max-w-6xl mx-auto px-6 pt-16 pb-14">
-    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-sky-400 text-xs font-mono mb-6">
-      <span>MS CS • Enterprise MLOps, Agentic AI & Distributed Data Systems</span>
+  <header class="relative z-10 max-w-6xl mx-auto px-6 pt-20 pb-16 animate-pop">
+    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-sky-400 text-xs font-mono mb-6 shadow-lg shadow-sky-950/50">
+      <span class="h-1.5 w-1.5 rounded-full bg-sky-400 animate-ping"></span>
+      <span>MS CS • Enterprise MLOps, Agentic AI & Distributed Data Architect</span>
     </div>
     <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight mb-6">
-      Architecting <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-emerald-400">low-latency, deterministic, and cost-aware</span> AI infrastructure.
+      Building <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-emerald-400">boring, predictable, and cost-efficient</span> AI infrastructure.
     </h1>
-    <p class="text-lg text-slate-400 max-w-3xl leading-relaxed mb-10">
-      I bridge the gap between experimental models and hardened production systems. Across <span class="text-slate-200 font-medium">Walmart, Google, and Deloitte (embedded at Visa, Apple, and Meta)</span>, I have architected Kubernetes inference layers, zero-trust LangChain/RAG guardrails, and Double ML causal release gates that tie model performance directly to P&L outcomes.
+    <p class="text-lg md:text-xl text-slate-400 max-w-3xl leading-relaxed mb-10">
+      I bridge the gap between experimental models and production-grade systems. Across <span class="text-slate-200 font-medium">Walmart, Google, and Deloitte (Visa, Apple, Meta)</span>, I architect Kubernetes inference layers, zero-trust LangChain guardrails, and Double ML causal release gates tied directly to executive P&L ROI.
     </p>
 
-    <!-- Metric Bento Grid -->
+    <!-- Bento Grid Metrics (Popping in) -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="glass p-5 rounded-xl glow transition">
-        <div class="text-xs font-mono text-slate-400 mb-1">ANNUAL SERVER OVERHEAD</div>
-        <div class="text-2xl md:text-3xl font-bold text-white font-mono">-20% <span class="text-sm text-emerald-400 font-normal">($350K+)</span></div>
+      <div class="glass p-5 rounded-xl glow-card transition animate-pop" style="animation-delay: 0.1s;">
+        <div class="text-xs font-mono text-slate-400 mb-1">SERVER OVERHEAD</div>
+        <div class="text-3xl font-bold text-white font-mono">-20% <span class="text-sm text-emerald-400 font-normal">($350K+)</span></div>
         <div class="text-xs text-slate-400 mt-2">K8s HPA millicore tuning & GPU telemetry</div>
       </div>
-      <div class="glass p-5 rounded-xl glow transition">
+      <div class="glass p-5 rounded-xl glow-card transition animate-pop" style="animation-delay: 0.2s;">
         <div class="text-xs font-mono text-slate-400 mb-1">DRIFT INCIDENT MTTR</div>
-        <div class="text-2xl md:text-3xl font-bold text-white font-mono">-45%</div>
+        <div class="text-3xl font-bold text-white font-mono">-45%</div>
         <div class="text-xs text-slate-400 mt-2">Automated playbooks & blue-green rollbacks</div>
       </div>
-      <div class="glass p-5 rounded-xl glow transition">
-        <div class="text-xs font-mono text-slate-400 mb-1">COMPLIANCE HALLUCINATIONS</div>
-        <div class="text-2xl md:text-3xl font-bold text-white font-mono">0.0%</div>
+      <div class="glass p-5 rounded-xl glow-card transition animate-pop" style="animation-delay: 0.3s;">
+        <div class="text-xs font-mono text-slate-400 mb-1">AGENTIC HALLUCINATIONS</div>
+        <div class="text-3xl font-bold text-white font-mono">0.0%</div>
         <div class="text-xs text-slate-400 mt-2">3-layer NER + Pydantic + DeBERTa NLI gate</div>
       </div>
-      <div class="glass p-5 rounded-xl glow transition">
+      <div class="glass p-5 rounded-xl glow-card transition animate-pop" style="animation-delay: 0.4s;">
         <div class="text-xs font-mono text-slate-400 mb-1">CAUSAL HOLDOUT PARITY</div>
-        <div class="text-2xl md:text-3xl font-bold text-white font-mono">20 bps</div>
-        <div class="text-xs text-slate-400 mt-2">Double ML & DoWhy vs. physical geo-holdouts</div>
+        <div class="text-3xl font-bold text-white font-mono">20 bps</div>
+        <div class="text-xs text-slate-400 mt-2">Double ML & DoWhy vs. physical geo-tests</div>
       </div>
     </div>
   </header>
 
   <!-- Interactive System Topologies -->
-  <section id="architectures" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/60">
+  <section id="architectures" class="relative z-10 max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/60">
     <div class="mb-8">
-      <div class="text-xs font-mono text-sky-400 uppercase tracking-wider mb-2">// Production Reference Architectures</div>
-      <h2 class="text-3xl font-bold text-white">Interactive System Topologies</h2>
-      <p class="text-sm text-slate-400 mt-1">Select an enterprise deployment below to inspect its dataflow, guardrail mechanics, and SLA tradeoffs.</p>
+      <div class="text-xs font-mono text-sky-400 uppercase tracking-wider mb-2">// Reference Architectures</div>
+      <h2 class="text-3xl font-bold text-white">Production System Topologies</h2>
+      <p class="text-sm text-slate-400 mt-1">Select an enterprise deployment to inspect its dataflow, safety gates, and SLA guarantees.</p>
     </div>
 
-    <!-- Interactive Architecture Tabs -->
+    <!-- Tabs -->
     <div class="flex flex-wrap gap-3 mb-8 font-mono text-xs">
       <button onclick="switchTab('walmart')" id="tab-walmart" class="px-4 py-2.5 rounded-lg border border-slate-800 glass transition tab-active">
-        01. Retail Supply Chain MLOps (Kubernetes + Double ML)
+        01. Retail MLOps & Causal Gate (Walmart)
       </button>
       <button onclick="switchTab('visa')" id="tab-visa" class="px-4 py-2.5 rounded-lg border border-slate-800 glass text-slate-400 hover:text-white transition">
-        02. Zero-Trust Agentic RAG & Guardrails (Fintech)
+        02. Zero-Trust Agentic RAG (Visa / Deloitte)
       </button>
       <button onclick="switchTab('applemeta')" id="tab-applemeta" class="px-4 py-2.5 rounded-lg border border-slate-800 glass text-slate-400 hover:text-white transition">
-        03. High-Throughput NLP & Hybrid Cloud Feature Store
+        03. Imbalanced NLP & Hybrid Cloud (Apple / Meta)
       </button>
     </div>
 
-    <!-- Tab 1 Content: Walmart -->
-    <div id="content-walmart" class="glass rounded-2xl p-6 md:p-8 glow transition">
+    <!-- Tab 1 -->
+    <div id="content-walmart" class="glass rounded-2xl p-6 md:p-8 glow-card transition animate-pop">
       <div class="flex flex-wrap justify-between items-start gap-4 mb-6">
         <div>
           <span class="px-2.5 py-1 rounded bg-sky-500/10 text-sky-400 font-mono text-xs border border-sky-500/20">ENTERPRISE SUPPLY CHAIN</span>
-          <h3 class="text-2xl font-bold text-white mt-2">Kubernetes Blue-Green Serving & Causal Inference Release Gate</h3>
+          <h3 class="text-2xl font-bold text-white mt-2">Kubernetes Blue-Green Serving & Causal Release Gate</h3>
         </div>
         <div class="flex gap-2 font-mono text-xs">
-          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-emerald-400">2x Deployment Velocity</span>
+          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-emerald-400">2x Velocity</span>
           <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-sky-400">-35% Failure Rate</span>
         </div>
       </div>
-
       <p class="text-slate-300 text-sm leading-relaxed mb-6">
-        Eliminated production model drift and cut annual compute costs by 20% ($350K+) across high-volume retail supply chain pipelines. Orchestrated distributed PySpark feature engineering with Airflow/Databricks, containerized LightGBM/XGBoost/PyTorch models on Kubernetes, and validated true algorithmic lift against seasonal noise using Double ML and DoWhy.
+        Orchestrated distributed PySpark feature engineering with Airflow/Databricks, containerized LightGBM/XGBoost/PyTorch models on Kubernetes, and validated true algorithmic lift against seasonal noise using Double ML and DoWhy.
       </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-950/80 border border-slate-800 rounded-xl p-5 mb-6 font-mono text-xs">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-950/80 border border-slate-800 rounded-xl p-5 font-mono text-xs">
         <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-sky-400 font-semibold mb-1">1. Feature & Training Layer</div>
-          <p class="text-slate-400 text-[11px]">Distributed PySpark on Databricks + Airflow DAGs; automated MLflow experiment & registry governance.</p>
+          <div class="text-sky-400 font-semibold mb-1">1. Spark Pipelines</div>
+          <p class="text-slate-400 text-[11px]">Databricks + Airflow DAGs with MLflow registry governance.</p>
         </div>
         <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-cyan-400 font-semibold mb-1">2. Staging Replay & K8s HPA</div>
-          <p class="text-slate-400 text-[11px]">Peak payload log replay to profile CPU/GPU memory before routing 5–10% asynchronous live shadow traffic.</p>
+          <div class="text-cyan-400 font-semibold mb-1">2. Staging Replay</div>
+          <p class="text-slate-400 text-[11px]">Peak log replay + 5–10% async live shadow traffic testing.</p>
         </div>
         <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-purple-400 font-semibold mb-1">3. Causal Validation Gate</div>
-          <p class="text-slate-400 text-[11px]">Double ML orthogonalization + DoWhy placebo/time-backtest refuters calibrated within 20 bps of geo-holdouts.</p>
+          <div class="text-purple-400 font-semibold mb-1">3. Causal Gate</div>
+          <p class="text-slate-400 text-[11px]">Double ML orthogonalization with 20 bps geo-holdout parity.</p>
         </div>
         <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-emerald-400 font-semibold mb-1">4. Automated Drift Playbooks</div>
-          <p class="text-slate-400 text-[11px]">Real-time latency/schema telemetry triggering zero-downtime blue-green rollbacks (-45% MTTR).</p>
+          <div class="text-emerald-400 font-semibold mb-1">4. Drift Playbooks</div>
+          <p class="text-slate-400 text-[11px]">AWS Lambda automated rollback triggering zero downtime.</p>
         </div>
       </div>
     </div>
 
-    <!-- Tab 2 Content: Visa -->
-    <div id="content-visa" class="glass rounded-2xl p-6 md:p-8 glow transition hidden">
+    <!-- Tab 2 -->
+    <div id="content-visa" class="glass rounded-2xl p-6 md:p-8 glow-card transition hidden animate-pop">
       <div class="flex flex-wrap justify-between items-start gap-4 mb-6">
         <div>
-          <span class="px-2.5 py-1 rounded bg-purple-500/10 text-purple-400 font-mono text-xs border border-purple-500/20">REGULATED FINTECH AI</span>
+          <span class="px-2.5 py-1 rounded bg-purple-500/10 text-purple-400 font-mono text-xs border border-purple-500/20">REGULATED FINTECH</span>
           <h3 class="text-2xl font-bold text-white mt-2">Deterministic 3-Layer Guardrail Sandwich for LangChain Agents</h3>
         </div>
         <div class="flex gap-2 font-mono text-xs">
-          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-emerald-400">+38% Triage Efficiency</span>
-          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-purple-400">0% Audited Hallucinations</span>
+          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-emerald-400">+38% Efficiency</span>
+          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-purple-400">0% Hallucinations</span>
         </div>
       </div>
-
       <p class="text-slate-300 text-sm leading-relaxed mb-6">
-        Architected an end-to-end Agentic AI and RAG compliance ecosystem for merchant risk vetting and dispute resolution. Treated the LLM strictly as a synthesis engine wrapped in deterministic Python, Pydantic, and Natural Language Inference (NLI) gates so no fabricated dollar amount or policy code could ever reach an investigator.
+        Architected an Agentic AI and RAG compliance ecosystem. Wrapped probabilistic LLM reasoning in strict deterministic Python, Pydantic, and NLI gates to guarantee zero fabricated financial data.
       </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-950/80 border border-slate-800 rounded-xl p-5 mb-6 font-mono text-xs">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-950/80 border border-slate-800 rounded-xl p-5 font-mono text-xs">
         <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-sky-400 font-semibold mb-1">Gate 1: SpaCy + BERT NER Lock</div>
-          <p class="text-slate-400 text-[11px]">Scrubs PCI/PII and extracts transaction amounts, MCCs, and dispute codes into an immutable state dictionary prior to retrieval.</p>
+          <div class="text-sky-400 font-semibold mb-1">Layer 1: SpaCy + BERT NER</div>
+          <p class="text-slate-400 text-[11px]">Scrubs PCI/PII and locks entity values into state dictionaries.</p>
         </div>
         <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-purple-400 font-semibold mb-1">Gate 2: Pydantic & Citation RAG</div>
-          <p class="text-slate-400 text-[11px]">Read-only tool execution with strict Enum schemas. Every generated claim must pair with a verified chunk_id and span.</p>
+          <div class="text-purple-400 font-semibold mb-1">Layer 2: Pydantic Tools</div>
+          <p class="text-slate-400 text-[11px]">Read-only tool execution with strict Enum dispute reason codes.</p>
         </div>
         <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-emerald-400 font-semibold mb-1">Gate 3: 15ms Set-Match + NLI</div>
-          <p class="text-slate-400 text-[11px]">Regex/SpaCy 1:1 entity set-intersection check + quantized DeBERTa-v3 cross-encoder verifying factual entailment (>0.92).</p>
+          <div class="text-emerald-400 font-semibold mb-1">Layer 3: 15ms NLI Gate</div>
+          <p class="text-slate-400 text-[11px]">DeBERTa cross-encoder verifying factual entailment >0.92.</p>
         </div>
       </div>
     </div>
 
-    <!-- Tab 3 Content: Apple & Meta -->
-    <div id="content-applemeta" class="glass rounded-2xl p-6 md:p-8 glow transition hidden">
+    <!-- Tab 3 -->
+    <div id="content-applemeta" class="glass rounded-2xl p-6 md:p-8 glow-card transition hidden animate-pop">
       <div class="flex flex-wrap justify-between items-start gap-4 mb-6">
         <div>
-          <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono text-xs border border-emerald-500/20">HYBRID CLOUD & DEEP LEARNING NLP</span>
-          <h3 class="text-2xl font-bold text-white mt-2">Imbalanced Transformer Classification & Cross-Cloud Streaming Pipelines</h3>
+          <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono text-xs border border-emerald-500/20">HYBRID CLOUD & DEEP LEARNING</span>
+          <h3 class="text-2xl font-bold text-white mt-2">Imbalanced Transformer Classification & Streaming Pipelines</h3>
         </div>
         <div class="flex gap-2 font-mono text-xs">
-          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-emerald-400">AWS + GCP Unified</span>
-          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-sky-400">PR-AUC & Focal Loss</span>
+          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-emerald-400">AWS + GCP</span>
+          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-sky-400">Focal Loss</span>
         </div>
       </div>
-
       <p class="text-slate-300 text-sm leading-relaxed mb-6">
-        Fine-tuned DeBERTa and BERT architectures on severely imbalanced (<1% minority class) diagnostic and feedback streams using focal loss and isotonic calibration, while engineering high-throughput PySpark and Kubernetes pipelines across hybrid AWS/GCP boundaries to eliminate training-serving skew.
+        Fine-tuned DeBERTa and BERT models on severely imbalanced streams using focal loss, while engineering high-throughput PySpark and Kubernetes pipelines across hybrid AWS/GCP boundaries.
       </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-950/80 border border-slate-800 rounded-xl p-5 mb-6 font-mono text-xs">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-950/80 border border-slate-800 rounded-xl p-5 font-mono text-xs">
         <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-sky-400 font-semibold mb-1">Rare-Event NLP Calibration (Apple Engagement)</div>
-          <p class="text-slate-400 text-[11px]">Replaced naive cross-entropy with Focal Loss and out-of-time validation gates, optimizing Precision@Recall thresholds to eliminate downstream false-positive triage fatigue.</p>
+          <div class="text-sky-400 font-semibold mb-1">Rare-Event NLP Calibration (Apple)</div>
+          <p class="text-slate-400 text-[11px]">Replaced naive cross-entropy with Focal Loss and out-of-time validation gates to eliminate false-positive triage fatigue.</p>
         </div>
         <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-emerald-400 font-semibold mb-1">Hybrid-Cloud Feature Standardization (Meta Engagement)</div>
-          <p class="text-slate-400 text-[11px]">Pushed PySpark and dbt aggregations close to storage layers across S3 and BigQuery/GCS to slash cross-cloud egress bottlenecks and enforce schema parity on EKS/GKE.</p>
+          <div class="text-emerald-400 font-semibold mb-1">Hybrid Cloud Scaling (Meta)</div>
+          <p class="text-slate-400 text-[11px]">Pushed PySpark and dbt aggregations close to S3 and BigQuery/GCS storage layers to eliminate cross-cloud egress bottlenecks.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Cost-Per-Inference Simulator -->
-  <section id="simulator" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/60">
-    <div class="glass rounded-2xl p-6 md:p-10 border border-sky-500/30">
+  <!-- Interactive Cost Simulator -->
+  <section id="simulator" class="relative z-10 max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/60">
+    <div class="glass rounded-2xl p-6 md:p-10 border border-sky-500/30 glow-card">
       <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider">// Interactive MLOps Economics Sandbox</span>
       <h2 class="text-2xl md:text-3xl font-bold text-white mt-1">Cost-Per-Inference Under Variable Latency SLAs</h2>
-      <p class="text-sm text-slate-400 mt-1 mb-8">
-        Test how serving topology and sampled shadow mode impact cloud compute spend before promoting a model to production.
-      </p>
+      <p class="text-sm text-slate-400 mt-1 mb-8">Model the monthly cloud bill impact of K8s CPU optimization vs. unmanaged GPU endpoints and shadow traffic.</p>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         <div class="space-y-6 bg-slate-950/60 p-6 rounded-xl border border-slate-800">
@@ -249,7 +260,7 @@
           <div>
             <div class="flex justify-between text-sm font-mono mb-2">
               <span class="text-slate-300">Live Shadow Mirroring %:</span>
-              <span id="shadowVal" class="text-emerald-400 font-bold">10% (Sampled + Staging Replay)</span>
+              <span id="shadowVal" class="text-emerald-400 font-bold">10% (Sampled + Replay)</span>
             </div>
             <input id="shadowSlider" type="range" min="5" max="100" step="5" value="10" class="w-full accent-emerald-400 cursor-pointer" oninput="updateCost()"/>
           </div>
@@ -285,13 +296,12 @@
     </div>
   </section>
 
-  <!-- Infrastructure Stack Topology -->
-  <section id="stack" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/60">
-    <div class="text-xs font-mono text-sky-400 uppercase tracking-wider mb-2">// Full-Stack Production Capabilities</div>
-    <h2 class="text-3xl font-bold text-white mb-8">AI Infrastructure & MLOps Stack</h2>
-
+  <!-- Infrastructure Stack -->
+  <section id="stack" class="relative z-10 max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/60">
+    <div class="text-xs font-mono text-sky-400 uppercase tracking-wider mb-2">// Capabilities</div>
+    <h2 class="text-3xl font-bold text-white mb-8">AI Infrastructure Stack</h2>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 font-mono text-xs">
-      <div class="glass p-5 rounded-xl">
+      <div class="glass p-5 rounded-xl glow-card transition">
         <div class="text-sky-400 font-semibold mb-3">COMPUTE & ORCHESTRATION</div>
         <ul class="space-y-2 text-slate-300">
           <li>• Kubernetes (EKS / GKE / HPA)</li>
@@ -301,8 +311,8 @@
           <li>• Apache Airflow & dbt</li>
         </ul>
       </div>
-      <div class="glass p-5 rounded-xl">
-        <div class="text-emerald-400 font-semibold mb-3">SERVING & AGENTIC GUARDRAILS</div>
+      <div class="glass p-5 rounded-xl glow-card transition">
+        <div class="text-emerald-400 font-semibold mb-3">SERVING & GUARDRAILS</div>
         <ul class="space-y-2 text-slate-300">
           <li>• FastAPI / Uvicorn / ONNX</li>
           <li>• LangChain & Agentic RAG</li>
@@ -311,17 +321,17 @@
           <li>• Hybrid Vector Search</li>
         </ul>
       </div>
-      <div class="glass p-5 rounded-xl">
+      <div class="glass p-5 rounded-xl glow-card transition">
         <div class="text-purple-400 font-semibold mb-3">MODELING & CAUSAL RIGOR</div>
         <ul class="space-y-2 text-slate-300">
           <li>• PyTorch, DeBERTa, BERT, Gemini</li>
           <li>• LightGBM & XGBoost at Scale</li>
           <li>• DoWhy & Double ML (EconML)</li>
           <li>• Switchback & Geo-Lift Testing</li>
-          <li>• Focal Loss & Isotonic Calibration</li>
+          <li>• Focal Loss & Calibration</li>
         </ul>
       </div>
-      <div class="glass p-5 rounded-xl">
+      <div class="glass p-5 rounded-xl glow-card transition">
         <div class="text-amber-400 font-semibold mb-3">DATA & OBSERVABILITY</div>
         <ul class="space-y-2 text-slate-300">
           <li>• PySpark & Databricks</li>
@@ -334,43 +344,84 @@
     </div>
   </section>
 
-  <!-- Engineering Writing & Credentials -->
-  <section id="writing" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/60">
-    <div class="text-xs font-mono text-sky-400 uppercase tracking-wider mb-2">// Technical Thought Leadership</div>
-    <h2 class="text-3xl font-bold text-white mb-8">Engineering Notes & Publications</h2>
-
+  <!-- Engineering Writing -->
+  <section id="writing" class="relative z-10 max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/60">
+    <div class="text-xs font-mono text-sky-400 uppercase tracking-wider mb-2">// Thought Leadership</div>
+    <h2 class="text-3xl font-bold text-white mb-8">Engineering Writing</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-      <div class="glass p-6 rounded-xl glow transition">
+      <div class="glass p-6 rounded-xl glow-card transition">
         <span class="text-xs font-mono text-amber-400">MEDIUM // MODEL EVALUATION</span>
         <h3 class="text-xl font-bold text-white mt-2 mb-2">Why Your 85% Accurate Model is Lying to You</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          How aggregate offline accuracy masks critical failure modes in imbalanced production pipelines—and how to fix it with PR-AUC calibration, class-weighted focal loss, and strict out-of-time validation gates.
-        </p>
+        <p class="text-sm text-slate-400 leading-relaxed">How aggregate offline accuracy masks critical failure modes in imbalanced production pipelines—and how to fix it with PR-AUC calibration and focal loss.</p>
       </div>
-      <div class="glass p-6 rounded-xl glow transition">
+      <div class="glass p-6 rounded-xl glow-card transition">
         <span class="text-xs font-mono text-emerald-400">ARCHITECTURE NOTE // CLOUD ECONOMICS</span>
-        <h3 class="text-xl font-bold text-white mt-2 mb-2">The Most Overlooked Metric in MLOps</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Why cost-per-inference under variable latency SLAs matters more than raw AUC: avoiding the 12-tool SaaS trap, migrating 80% of endpoints to batch-to-Redis, and using sampled shadow deployments.
-        </p>
+        <h3 class="text-xl font-bold text-white mt-2 mb-2">Cost-Per-Inference Under Variable Latency SLAs</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Why cost-per-inference matters more than raw AUC: avoiding the SaaS tool trap, migrating endpoints to batch-to-Redis, and using sampled shadow deployments.</p>
       </div>
     </div>
-
-    <!-- Education Bar -->
-    <div class="glass p-6 rounded-xl flex flex-wrap justify-between items-center gap-4 text-xs font-mono text-slate-300">
+    
+    <!-- Education -->
+    <div class="glass p-6 rounded-xl flex flex-wrap justify-between items-center gap-4 text-xs font-mono text-slate-300 glow-card">
       <div><strong class="text-white">M.S. Computer Science</strong> — University of New Haven</div>
       <div class="text-slate-600 hidden md:block">|</div>
       <div><strong class="text-white">PG Cert. Big Data Engineering</strong> — Purdue University</div>
       <div class="text-slate-600 hidden md:block">|</div>
-      <div><strong class="text-white">B.E. Computer Science</strong> — Visvesvaraya Technological University</div>
+      <div><strong class="text-white">B.E. Computer Science</strong> — VTU</div>
     </div>
   </section>
 
-  <footer class="border-t border-slate-800/80 py-10 text-center text-xs font-mono text-slate-500">
+  <footer class="relative z-10 border-t border-slate-800/80 py-10 text-center text-xs font-mono text-slate-500">
     Anish Deepak Joshi • Built for Boring, Predictable, Cost-Efficient Production AI
   </footer>
 
+  <!-- Canvas Animation Script for Streaming Background Lines -->
   <script>
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const particles = [];
+    const numParticles = 35;
+
+    for (let i = 0; i < numParticles; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        length: Math.random() * 80 + 20,
+        speed: Math.random() * 1.5 + 0.5,
+        opacity: Math.random() * 0.5 + 0.1
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.lineWidth = 1;
+
+      particles.forEach(p => {
+        ctx.strokeStyle = `rgba(56, 189, 248, ${p.opacity})`;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p.x, p.y + p.length);
+        ctx.stroke();
+
+        p.y += p.speed;
+        if (p.y > canvas.height) {
+          p.y = -p.length;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+
     function switchTab(tab) {
       ['walmart', 'visa', 'applemeta'].forEach(t => {
         document.getElementById('content-' + t).classList.add('hidden');
@@ -390,7 +441,7 @@
       const arch = document.getElementById('archSelect').value;
 
       document.getElementById('rpsVal').innerText = rps + ' RPS';
-      document.getElementById('shadowVal').innerText = shadow + '% ' + (shadow <= 15 ? '(Sampled + Staging Replay)' : '(Full Live Duplication)');
+      document.getElementById('shadowVal').innerText = shadow + '% ' + (shadow <= 15 ? '(Sampled + Replay)' : '(Full Live Duplication)');
 
       const shadowMultiplier = 1 + (shadow / 100);
       const naiveBaselineMonthly = (rps * 18) * 2.0;
