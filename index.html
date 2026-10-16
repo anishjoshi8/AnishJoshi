@@ -1,420 +1,59 @@
-<!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anish Deepak Joshi | AI Infrastructure & MLOps Architect</title>
-  <meta name="description" content="Lead Data Scientist & ML Infrastructure Engineer specializing in Kubernetes MLOps, Deterministic Agentic AI, and Causal Inference at scale."/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          }
-        }
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pavithra Agraharam - AI/ML Engineer</title>
+    <meta
+      name="description"
+      content="Pavithra Agraharam - AI/ML Engineer specializing in MLOps, ML model development, computer vision and data engineering. Building AI since 2018."
+    />
+    <meta name="author" content="Pavithra Agraharam" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pavithra Agraharam - AI/ML Engineer" />
+    <meta
+      property="og:description"
+      content="AI/ML Engineer specializing in MLOps, ML model development, computer vision and data engineering. Building AI since 2018."
+    />
+    <meta property="og:url" content="https://pavithra-agraharam.github.io" />
+    <meta property="og:image" content="https://pavithra-agraharam.github.io/og-image.png" />
+    <link rel="canonical" href="https://pavithra-agraharam.github.io" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pavithra Agraharam - AI/ML Engineer" />
+    <meta
+      name="twitter:description"
+      content="AI/ML Engineer specializing in MLOps, ML model development, computer vision and data engineering. Building AI since 2018."
+    />
+    <meta name="twitter:image" content="https://pavithra-agraharam.github.io/og-image.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500;1,9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Pavithra Agraharam",
+        "jobTitle": "AI/ML Engineer",
+        "url": "https://pavithra-agraharam.github.io",
+        "image": "https://pavithra-agraharam.github.io/og-image.png",
+        "sameAs": [
+          "https://github.com/pavithra-agraharam",
+          "https://www.linkedin.com/in/pavithraagraharam/",
+          "https://medium.com/@kartheekvadlamani/mastering-mlops-a-comprehensive-guide-to-build-scalable-and-reliable-machine-learning-pipelines-2c015937056c"
+        ]
       }
-    }
-  </script>
-  <style>
-    body { background-color: #070a12; color: #e2e8f0; }
-    .glass { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); }
-    .glow:hover { border-color: rgba(56, 189, 248, 0.45); box-shadow: 0 0 28px -6px rgba(56, 189, 248, 0.18); }
-    .tab-active { background: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.6); color: #38bdf8; }
-  </style>
-</head>
-<body class="antialiased selection:bg-sky-500 selection:text-white">
-
-  <!-- Live System Telemetry Header -->
-  <div class="border-b border-slate-800/80 bg-slate-950/90 text-xs font-mono text-slate-400 py-2.5 px-6">
-    <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
-      <div class="flex items-center space-x-2">
-        <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>NODE: ANISH-JOSHI-MLOPS</span>
-        <span class="text-slate-700">|</span>
-        <span>SAN FRANCISCO BAY AREA, CA</span>
-      </div>
-      <div class="flex flex-wrap gap-4 md:gap-6">
-        <span>DEPLOY_VELOCITY: <strong class="text-emerald-400">2.0x</strong></span>
-        <span>COMPUTE_SAVED: <strong class="text-sky-400">$350K+/yr (-20%)</strong></span>
-        <span>CAUSAL_DELTA: <strong class="text-purple-400">20 bps</strong></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navigation -->
-  <nav class="sticky top-0 z-50 glass border-b border-slate-800/60">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="font-mono font-semibold text-lg tracking-tight text-white">
-        anishjoshi8<span class="text-sky-400">.infra</span>
-      </a>
-      <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
-        <a href="#architectures" class="hover:text-sky-400 transition">System Topologies</a>
-        <a href="#simulator" class="hover:text-sky-400 transition">Cost/Latency Simulator</a>
-        <a href="#stack" class="hover:text-sky-400 transition">Infrastructure Stack</a>
-        <a href="#writing" class="hover:text-sky-400 transition">Engineering Notes</a>
-      </div>
-      <div class="flex items-center space-x-3">
-        <a href="https://github.com/anishjoshi8" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 font-mono text-xs hover:border-slate-500 transition">
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com" target="_blank" class="px-4 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/30 text-sky-400 font-mono text-xs hover:bg-sky-500 hover:text-slate-950 transition font-semibold">
-          LinkedIn ->
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="max-w-6xl mx-auto px-6 pt-16 pb-14">
-    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-sky-400 text-xs font-mono mb-6">
-      <span>MS CS • Enterprise MLOps, Agentic AI & Distributed Data Systems</span>
-    </div>
-    <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight mb-6">
-      Architecting <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-emerald-400">low-latency, deterministic, and cost-aware</span> AI infrastructure.
-    </h1>
-    <p class="text-lg text-slate-400 max-w-3xl leading-relaxed mb-10">
-      I bridge the gap between experimental models and hardened production systems. Across <span class="text-slate-200 font-medium">Walmart, Google, and Deloitte (embedded at Visa, Apple, and Meta)</span>, I have architected Kubernetes inference layers, zero-trust LangChain/RAG guardrails, and Double ML causal release gates that tie model performance directly to P&L outcomes.
-    </p>
-
-    <!-- Metric Bento Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="glass p-5 rounded-xl glow transition">
-        <div class="text-xs font-mono text-slate-400 mb-1">ANNUAL SERVER OVERHEAD</div>
-        <div class="text-2xl md:text-3xl font-bold text-white font-mono">-20% <span class="text-sm text-emerald-400 font-normal">($350K+)</span></div>
-        <div class="text-xs text-slate-400 mt-2">K8s HPA millicore tuning & GPU telemetry</div>
-      </div>
-      <div class="glass p-5 rounded-xl glow transition">
-        <div class="text-xs font-mono text-slate-400 mb-1">DRIFT INCIDENT MTTR</div>
-        <div class="text-2xl md:text-3xl font-bold text-white font-mono">-45%</div>
-        <div class="text-xs text-slate-400 mt-2">Automated playbooks & blue-green rollbacks</div>
-      </div>
-      <div class="glass p-5 rounded-xl glow transition">
-        <div class="text-xs font-mono text-slate-400 mb-1">COMPLIANCE HALLUCINATIONS</div>
-        <div class="text-2xl md:text-3xl font-bold text-white font-mono">0.0%</div>
-        <div class="text-xs text-slate-400 mt-2">3-layer NER + Pydantic + DeBERTa NLI gate</div>
-      </div>
-      <div class="glass p-5 rounded-xl glow transition">
-        <div class="text-xs font-mono text-slate-400 mb-1">CAUSAL HOLDOUT PARITY</div>
-        <div class="text-2xl md:text-3xl font-bold text-white font-mono">20 bps</div>
-        <div class="text-xs text-slate-400 mt-2">Double ML & DoWhy vs. physical geo-holdouts</div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Interactive System Topologies -->
-  <section id="architectures" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/60">
-    <div class="mb-8">
-      <div class="text-xs font-mono text-sky-400 uppercase tracking-wider mb-2">// Production Reference Architectures</div>
-      <h2 class="text-3xl font-bold text-white">Interactive System Topologies</h2>
-      <p class="text-sm text-slate-400 mt-1">Select an enterprise deployment below to inspect its dataflow, guardrail mechanics, and SLA tradeoffs.</p>
-    </div>
-
-    <!-- Interactive Architecture Tabs -->
-    <div class="flex flex-wrap gap-3 mb-8 font-mono text-xs">
-      <button onclick="switchTab('walmart')" id="tab-walmart" class="px-4 py-2.5 rounded-lg border border-slate-800 glass transition tab-active">
-        01. Retail Supply Chain MLOps (Kubernetes + Double ML)
-      </button>
-      <button onclick="switchTab('visa')" id="tab-visa" class="px-4 py-2.5 rounded-lg border border-slate-800 glass text-slate-400 hover:text-white transition">
-        02. Zero-Trust Agentic RAG & Guardrails (Fintech)
-      </button>
-      <button onclick="switchTab('applemeta')" id="tab-applemeta" class="px-4 py-2.5 rounded-lg border border-slate-800 glass text-slate-400 hover:text-white transition">
-        03. High-Throughput NLP & Hybrid Cloud Feature Store
-      </button>
-    </div>
-
-    <!-- Tab 1 Content: Walmart -->
-    <div id="content-walmart" class="glass rounded-2xl p-6 md:p-8 glow transition">
-      <div class="flex flex-wrap justify-between items-start gap-4 mb-6">
-        <div>
-          <span class="px-2.5 py-1 rounded bg-sky-500/10 text-sky-400 font-mono text-xs border border-sky-500/20">ENTERPRISE SUPPLY CHAIN</span>
-          <h3 class="text-2xl font-bold text-white mt-2">Kubernetes Blue-Green Serving & Causal Inference Release Gate</h3>
-        </div>
-        <div class="flex gap-2 font-mono text-xs">
-          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-emerald-400">2x Deployment Velocity</span>
-          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-sky-400">-35% Failure Rate</span>
-        </div>
-      </div>
-
-      <p class="text-slate-300 text-sm leading-relaxed mb-6">
-        Eliminated production model drift and cut annual compute costs by 20% ($350K+) across high-volume retail supply chain pipelines. Orchestrated distributed PySpark feature engineering with Airflow/Databricks, containerized LightGBM/XGBoost/PyTorch models on Kubernetes, and validated true algorithmic lift against seasonal noise using Double ML and DoWhy.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-950/80 border border-slate-800 rounded-xl p-5 mb-6 font-mono text-xs">
-        <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-sky-400 font-semibold mb-1">1. Feature & Training Layer</div>
-          <p class="text-slate-400 text-[11px]">Distributed PySpark on Databricks + Airflow DAGs; automated MLflow experiment & registry governance.</p>
-        </div>
-        <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-cyan-400 font-semibold mb-1">2. Staging Replay & K8s HPA</div>
-          <p class="text-slate-400 text-[11px]">Peak payload log replay to profile CPU/GPU memory before routing 5–10% asynchronous live shadow traffic.</p>
-        </div>
-        <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-purple-400 font-semibold mb-1">3. Causal Validation Gate</div>
-          <p class="text-slate-400 text-[11px]">Double ML orthogonalization + DoWhy placebo/time-backtest refuters calibrated within 20 bps of geo-holdouts.</p>
-        </div>
-        <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-emerald-400 font-semibold mb-1">4. Automated Drift Playbooks</div>
-          <p class="text-slate-400 text-[11px]">Real-time latency/schema telemetry triggering zero-downtime blue-green rollbacks (-45% MTTR).</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tab 2 Content: Visa -->
-    <div id="content-visa" class="glass rounded-2xl p-6 md:p-8 glow transition hidden">
-      <div class="flex flex-wrap justify-between items-start gap-4 mb-6">
-        <div>
-          <span class="px-2.5 py-1 rounded bg-purple-500/10 text-purple-400 font-mono text-xs border border-purple-500/20">REGULATED FINTECH AI</span>
-          <h3 class="text-2xl font-bold text-white mt-2">Deterministic 3-Layer Guardrail Sandwich for LangChain Agents</h3>
-        </div>
-        <div class="flex gap-2 font-mono text-xs">
-          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-emerald-400">+38% Triage Efficiency</span>
-          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-purple-400">0% Audited Hallucinations</span>
-        </div>
-      </div>
-
-      <p class="text-slate-300 text-sm leading-relaxed mb-6">
-        Architected an end-to-end Agentic AI and RAG compliance ecosystem for merchant risk vetting and dispute resolution. Treated the LLM strictly as a synthesis engine wrapped in deterministic Python, Pydantic, and Natural Language Inference (NLI) gates so no fabricated dollar amount or policy code could ever reach an investigator.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-950/80 border border-slate-800 rounded-xl p-5 mb-6 font-mono text-xs">
-        <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-sky-400 font-semibold mb-1">Gate 1: SpaCy + BERT NER Lock</div>
-          <p class="text-slate-400 text-[11px]">Scrubs PCI/PII and extracts transaction amounts, MCCs, and dispute codes into an immutable state dictionary prior to retrieval.</p>
-        </div>
-        <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-purple-400 font-semibold mb-1">Gate 2: Pydantic & Citation RAG</div>
-          <p class="text-slate-400 text-[11px]">Read-only tool execution with strict Enum schemas. Every generated claim must pair with a verified chunk_id and span.</p>
-        </div>
-        <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-emerald-400 font-semibold mb-1">Gate 3: 15ms Set-Match + NLI</div>
-          <p class="text-slate-400 text-[11px]">Regex/SpaCy 1:1 entity set-intersection check + quantized DeBERTa-v3 cross-encoder verifying factual entailment (>0.92).</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tab 3 Content: Apple & Meta -->
-    <div id="content-applemeta" class="glass rounded-2xl p-6 md:p-8 glow transition hidden">
-      <div class="flex flex-wrap justify-between items-start gap-4 mb-6">
-        <div>
-          <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono text-xs border border-emerald-500/20">HYBRID CLOUD & DEEP LEARNING NLP</span>
-          <h3 class="text-2xl font-bold text-white mt-2">Imbalanced Transformer Classification & Cross-Cloud Streaming Pipelines</h3>
-        </div>
-        <div class="flex gap-2 font-mono text-xs">
-          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-emerald-400">AWS + GCP Unified</span>
-          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-700 text-sky-400">PR-AUC & Focal Loss</span>
-        </div>
-      </div>
-
-      <p class="text-slate-300 text-sm leading-relaxed mb-6">
-        Fine-tuned DeBERTa and BERT architectures on severely imbalanced (<1% minority class) diagnostic and feedback streams using focal loss and isotonic calibration, while engineering high-throughput PySpark and Kubernetes pipelines across hybrid AWS/GCP boundaries to eliminate training-serving skew.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-950/80 border border-slate-800 rounded-xl p-5 mb-6 font-mono text-xs">
-        <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-sky-400 font-semibold mb-1">Rare-Event NLP Calibration (Apple Engagement)</div>
-          <p class="text-slate-400 text-[11px]">Replaced naive cross-entropy with Focal Loss and out-of-time validation gates, optimizing Precision@Recall thresholds to eliminate downstream false-positive triage fatigue.</p>
-        </div>
-        <div class="p-3.5 rounded bg-slate-900 border border-slate-800">
-          <div class="text-emerald-400 font-semibold mb-1">Hybrid-Cloud Feature Standardization (Meta Engagement)</div>
-          <p class="text-slate-400 text-[11px]">Pushed PySpark and dbt aggregations close to storage layers across S3 and BigQuery/GCS to slash cross-cloud egress bottlenecks and enforce schema parity on EKS/GKE.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Cost-Per-Inference Simulator -->
-  <section id="simulator" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/60">
-    <div class="glass rounded-2xl p-6 md:p-10 border border-sky-500/30">
-      <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider">// Interactive MLOps Economics Sandbox</span>
-      <h2 class="text-2xl md:text-3xl font-bold text-white mt-1">Cost-Per-Inference Under Variable Latency SLAs</h2>
-      <p class="text-sm text-slate-400 mt-1 mb-8">
-        Test how serving topology and sampled shadow mode impact cloud compute spend before promoting a model to production.
-      </p>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        <div class="space-y-6 bg-slate-950/60 p-6 rounded-xl border border-slate-800">
-          <div>
-            <div class="flex justify-between text-sm font-mono mb-2">
-              <span class="text-slate-300">Peak Throughput (Requests / Sec):</span>
-              <span id="rpsVal" class="text-sky-400 font-bold">300 RPS</span>
-            </div>
-            <input id="rpsSlider" type="range" min="20" max="1000" step="20" value="300" class="w-full accent-sky-400 cursor-pointer" oninput="updateCost()"/>
-          </div>
-
-          <div>
-            <div class="flex justify-between text-sm font-mono mb-2">
-              <span class="text-slate-300">Live Shadow Mirroring %:</span>
-              <span id="shadowVal" class="text-emerald-400 font-bold">10% (Sampled + Staging Replay)</span>
-            </div>
-            <input id="shadowSlider" type="range" min="5" max="100" step="5" value="10" class="w-full accent-emerald-400 cursor-pointer" oninput="updateCost()"/>
-          </div>
-
-          <div>
-            <div class="flex justify-between text-sm font-mono mb-2">
-              <span class="text-slate-300">Serving Pattern:</span>
-            </div>
-            <select id="archSelect" onchange="updateCost()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2.5 text-xs md:text-sm font-mono text-white focus:outline-none focus:border-sky-400">
-              <option value="k8s_cpu">Custom K8s CPU Pods (FastAPI + SpaCy pipes stripped + HPA)</option>
-              <option value="managed_gpu">Managed GPU Endpoint (Over-provisioned for peak load)</option>
-              <option value="batch_redis">Hourly Batch Scoring -> Materialized to Redis / DynamoDB</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
-            <div class="text-xs font-mono text-slate-400">EST. MONTHLY SERVING BILL</div>
-            <div id="monthlyCost" class="text-3xl font-bold font-mono text-white mt-2">$1,782</div>
-            <div id="costNote" class="text-xs text-emerald-400 mt-2 font-mono">Includes 10% shadow traffic overhead</div>
-          </div>
-          <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
-            <div class="text-xs font-mono text-slate-400">ANNUAL INFRASTRUCTURE SAVED</div>
-            <div id="annualSavings" class="text-3xl font-bold font-mono text-sky-400 mt-2">$108,216/yr</div>
-            <div class="text-xs text-slate-400 mt-2 font-mono">vs. 100% shadowed managed GPU</div>
-          </div>
-          <div class="sm:col-span-2 bg-slate-900/70 p-4 rounded-xl border border-slate-800 text-xs font-mono text-slate-300 leading-relaxed">
-            <span class="text-sky-400 font-semibold">ARCHITECTURAL VERDICT:</span> <span id="archInsight"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Infrastructure Stack Topology -->
-  <section id="stack" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/60">
-    <div class="text-xs font-mono text-sky-400 uppercase tracking-wider mb-2">// Full-Stack Production Capabilities</div>
-    <h2 class="text-3xl font-bold text-white mb-8">AI Infrastructure & MLOps Stack</h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 font-mono text-xs">
-      <div class="glass p-5 rounded-xl">
-        <div class="text-sky-400 font-semibold mb-3">COMPUTE & ORCHESTRATION</div>
-        <ul class="space-y-2 text-slate-300">
-          <li>• Kubernetes (EKS / GKE / HPA)</li>
-          <li>• Docker & Blue-Green CI/CD</li>
-          <li>• Terraform & GitOps</li>
-          <li>• Vertex AI & AWS Lambda</li>
-          <li>• Apache Airflow & dbt</li>
-        </ul>
-      </div>
-      <div class="glass p-5 rounded-xl">
-        <div class="text-emerald-400 font-semibold mb-3">SERVING & AGENTIC GUARDRAILS</div>
-        <ul class="space-y-2 text-slate-300">
-          <li>• FastAPI / Uvicorn / ONNX</li>
-          <li>• LangChain & Agentic RAG</li>
-          <li>• Pydantic Schema Gates</li>
-          <li>• SpaCy / BERT Custom NER</li>
-          <li>• Hybrid Vector Search</li>
-        </ul>
-      </div>
-      <div class="glass p-5 rounded-xl">
-        <div class="text-purple-400 font-semibold mb-3">MODELING & CAUSAL RIGOR</div>
-        <ul class="space-y-2 text-slate-300">
-          <li>• PyTorch, DeBERTa, BERT, Gemini</li>
-          <li>• LightGBM & XGBoost at Scale</li>
-          <li>• DoWhy & Double ML (EconML)</li>
-          <li>• Switchback & Geo-Lift Testing</li>
-          <li>• Focal Loss & Isotonic Calibration</li>
-        </ul>
-      </div>
-      <div class="glass p-5 rounded-xl">
-        <div class="text-amber-400 font-semibold mb-3">DATA & OBSERVABILITY</div>
-        <ul class="space-y-2 text-slate-300">
-          <li>• PySpark & Databricks</li>
-          <li>• Snowflake & BigQuery ML</li>
-          <li>• Delta Lake / Parquet</li>
-          <li>• MLflow Registry & Tracing</li>
-          <li>• Drift & Tail-Latency Telemetry</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Engineering Writing & Credentials -->
-  <section id="writing" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/60">
-    <div class="text-xs font-mono text-sky-400 uppercase tracking-wider mb-2">// Technical Thought Leadership</div>
-    <h2 class="text-3xl font-bold text-white mb-8">Engineering Notes & Publications</h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-      <div class="glass p-6 rounded-xl glow transition">
-        <span class="text-xs font-mono text-amber-400">MEDIUM // MODEL EVALUATION</span>
-        <h3 class="text-xl font-bold text-white mt-2 mb-2">Why Your 85% Accurate Model is Lying to You</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          How aggregate offline accuracy masks critical failure modes in imbalanced production pipelines—and how to fix it with PR-AUC calibration, class-weighted focal loss, and strict out-of-time validation gates.
-        </p>
-      </div>
-      <div class="glass p-6 rounded-xl glow transition">
-        <span class="text-xs font-mono text-emerald-400">ARCHITECTURE NOTE // CLOUD ECONOMICS</span>
-        <h3 class="text-xl font-bold text-white mt-2 mb-2">The Most Overlooked Metric in MLOps</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Why cost-per-inference under variable latency SLAs matters more than raw AUC: avoiding the 12-tool SaaS trap, migrating 80% of endpoints to batch-to-Redis, and using sampled shadow deployments.
-        </p>
-      </div>
-    </div>
-
-    <!-- Education Bar -->
-    <div class="glass p-6 rounded-xl flex flex-wrap justify-between items-center gap-4 text-xs font-mono text-slate-300">
-      <div><strong class="text-white">M.S. Computer Science</strong> — University of New Haven</div>
-      <div class="text-slate-600 hidden md:block">|</div>
-      <div><strong class="text-white">PG Cert. Big Data Engineering</strong> — Purdue University</div>
-      <div class="text-slate-600 hidden md:block">|</div>
-      <div><strong class="text-white">B.E. Computer Science</strong> — Visvesvaraya Technological University</div>
-    </div>
-  </section>
-
-  <footer class="border-t border-slate-800/80 py-10 text-center text-xs font-mono text-slate-500">
-    Anish Deepak Joshi • Built for Boring, Predictable, Cost-Efficient Production AI
-  </footer>
-
-  <script>
-    function switchTab(tab) {
-      ['walmart', 'visa', 'applemeta'].forEach(t => {
-        document.getElementById('content-' + t).classList.add('hidden');
-        const btn = document.getElementById('tab-' + t);
-        btn.classList.remove('tab-active');
-        btn.classList.add('text-slate-400');
-      });
-      document.getElementById('content-' + tab).classList.remove('hidden');
-      const activeBtn = document.getElementById('tab-' + tab);
-      activeBtn.classList.add('tab-active');
-      activeBtn.classList.remove('text-slate-400');
-    }
-
-    function updateCost() {
-      const rps = parseInt(document.getElementById('rpsSlider').value);
-      const shadow = parseInt(document.getElementById('shadowSlider').value);
-      const arch = document.getElementById('archSelect').value;
-
-      document.getElementById('rpsVal').innerText = rps + ' RPS';
-      document.getElementById('shadowVal').innerText = shadow + '% ' + (shadow <= 15 ? '(Sampled + Staging Replay)' : '(Full Live Duplication)');
-
-      const shadowMultiplier = 1 + (shadow / 100);
-      const naiveBaselineMonthly = (rps * 18) * 2.0;
-
-      let baseCost = 0;
-      let insight = "";
-      if (arch === 'k8s_cpu') {
-        baseCost = rps * 5.4 * shadowMultiplier;
-        insight = "Running FastAPI on custom Kubernetes clusters with stripped SpaCy pipes, millicore HPA limits, and 10% sampled shadow traffic avoids managed-node markups while guaranteeing p99 latency parity.";
-      } else if (arch === 'managed_gpu') {
-        baseCost = rps * 18.0 * shadowMultiplier;
-        insight = "Managed GPU endpoints charge a steep per-node markup and burn idle budget when serving CPU-bound tabular or lightweight NLP routing workloads.";
-      } else {
-        baseCost = (rps * 1.6) + 180;
-        insight = "Materializing hourly batch predictions into Redis/DynamoDB eliminates real-time container auto-scaling cold starts and cuts compute overhead by >75%.";
-      }
-
-      const annualSaved = Math.max(0, Math.round((naiveBaselineMonthly - baseCost) * 12));
-      document.getElementById('monthlyCost').innerText = '$' + Math.round(baseCost).toLocaleString();
-      document.getElementById('costNote').innerText = `Includes ${shadow}% live shadow traffic overhead`;
-      document.getElementById('annualSavings').innerText = '$' + annualSaved.toLocaleString() + '/yr';
-      document.getElementById('archInsight').innerText = insight;
-    }
-    updateCost();
-  </script>
-</body>
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
